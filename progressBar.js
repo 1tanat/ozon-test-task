@@ -3,6 +3,8 @@ class ProgressBar {
         this.svgElement = document.querySelector('svg');
         this.circleElement = document.querySelector('circle');
         this.inputElement = document.querySelector('.input');
+        this.animateCheckbox = document.querySelector('.animate');
+        this.hideCheckbox = document.querySelector('.hide');
 
         this.svgSize = size;
         this.strokeWidth = strokeWidth;
@@ -18,7 +20,6 @@ class ProgressBar {
         this.updateStrokeColor(color);
         this.updateProgress();
 
-        this.inputElement.addEventListener('input', this.handleInput.bind(this));
     }
 
     setProgress(value) {
@@ -28,11 +29,6 @@ class ProgressBar {
         
         this.offset = this.circumference - (this.progress * this.circumference) / 100;
         this.updateProgress();
-    }
-
-    handleInput(event) {
-        const value = event.target.value;
-        this.setProgress(value);
     }
 
     setSize(size) {
@@ -55,8 +51,8 @@ class ProgressBar {
 
     setStrokeWidth(strokeWidth) {
         this.strokeWidth = strokeWidth;
-        this.calculateRadius();
-        this.calculateCircumference();
+        this.setRadius(this.calculateRadius());
+        this.setCirciumference(this.calculateCircumference());
 
         this.updateRadius();
         this.updateStrokeWidth();
