@@ -1,9 +1,9 @@
 class ProgressBarInterface {
     constructor(progressBarWrapper, progressValue = 100, size = 200, strokeWidth = 5, color = 'black') {
         this.progressBarWrapper = progressBarWrapper;
-        this.svgElement = progressBarWrapper.querySelector('svg');
-        this.circleElement = progressBarWrapper.querySelector('circle');
-        this.inputElement = progressBarWrapper.querySelector('.input');
+        this.svgElement = progressBarWrapper.querySelector('.progress-svg');
+        this.circleElement = progressBarWrapper.querySelector('.progress-bar');
+        this.inputElement = progressBarWrapper.querySelector('.progress-input');
         this.checkboxAnimate = progressBarWrapper.querySelector('.checkbox-animate');
         this.checkboxHidden = progressBarWrapper.querySelector('.checkbox-hidden');
 
@@ -24,7 +24,7 @@ class ProgressBarInterface {
         }
 
         this.inputElement.addEventListener('input', (event)  => {
-            this.progressBar.setProgress(event.target.value);
+            this.progressBar.setProgressValue(event.target.value);
         });
     }
 

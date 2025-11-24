@@ -1,11 +1,11 @@
 class ProgressBar {
-    constructor(svgElement, circleElement, progress = 100, size = 200, strokeWidth = 5, color = 'black') {
+    constructor(svgElement, circleElement, progressValue = 100, size = 200, strokeWidth = 5, color = 'black') {
         this.svgElement = svgElement;
         this.circleElement = circleElement;
 
         this.svgSize = size;
         this.strokeWidth = strokeWidth;
-        this.progress = progress;
+        this.progressValue = progressValue;
         this.state = 'normal';
 
         this.radius = this.calculateRadius();
@@ -22,12 +22,12 @@ class ProgressBar {
 
     }
 
-    setProgress(value) {
+    setProgressValue(value) {
         if (value < 0) value = 0;
         if (value > 100) value = 100;
-        this.progress = value;
+        this.progressValue = value;
         
-        this.offset = this.circumference - (this.progress * this.circumference) / 100;
+        this.offset = this.calculateOffset();
         this.updateProgress();
     }
 
@@ -35,11 +35,6 @@ class ProgressBar {
         this.state = state;
         this.updateState();
     }
-
-    getState() {
-        return this.state;
-    }
-
     updateState() {
         this.svgElement.classList.remove('progressbar-hide');
         this.svgElement.classList.remove('progressbar-animate');
@@ -59,7 +54,7 @@ class ProgressBar {
     }
 
     calculateOffset() {
-        return this.circumference - (this.progress * this.circumference) / 100;
+        return this.circumference - (this.progressValue * this.circumference) / 100;
     }
 
     setSize(size) {
@@ -67,12 +62,16 @@ class ProgressBar {
 
         this.setRadius(this.calculateRadius());
         this.setCircumference(this.calculateCircumference());
+        this.setOffset(this.calculateOffset());
+
+        this.updateStrokeWidth();
         this.updateSize();
+        this.updateProgress();
     }
 
     setStrokeColor(color) {
         this.color = color;
-        this.updateStrokeColor(this.color);
+        this.updateStrokeColor();
     }
 
     setStrokeWidth(strokeWidth) {
