@@ -5,6 +5,7 @@
         <title>Progress Element Test</title>
         <link rel="stylesheet" href="style.css">
         <script src="progressBar.js" defer></script>
+        <script src="progressBarInterface.js" defer></script>
         <script src="script.js" defer></script>
     </head>
     <body>
@@ -12,17 +13,17 @@
             <svg>
                 <circle class="bar" fill="none" />
             </svg>
-            <div class="controls">
+            <div class="toggles">
                 <div>
                     <input type="number" min="0" max="100" class="input">
                     <span>Value</span>
                 </div>
                 <div>
-                    <input type="checkbox" class="animate" checked>
+                    <input type="checkbox" class="checkbox-animate">
                     <span>Animate</span>
                 </div>
                 <div>
-                    <input type="checkbox" class="hide" checked>
+                    <input type="checkbox" class="checkbox-hidden">
                     <span>Hide</span>
                 </div>
 

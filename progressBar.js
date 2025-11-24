@@ -6,6 +6,7 @@ class ProgressBar {
         this.svgSize = size;
         this.strokeWidth = strokeWidth;
         this.progress = progress;
+        this.state = 'normal';
 
         this.radius = this.calculateRadius();
         this.circumference = this.calculateCircumference();
@@ -17,6 +18,7 @@ class ProgressBar {
         this.updateStrokeWidth();
         this.updateStrokeColor();
         this.updateProgress();
+        this.updateState();
 
     }
 
@@ -29,6 +31,28 @@ class ProgressBar {
         this.updateProgress();
     }
 
+    setState(state) {
+        this.state = state;
+        this.updateState();
+    }
+
+    getState() {
+        return this.state;
+    }
+
+    updateState() {
+        this.svgElement.classList.remove('progressbar-hide');
+        this.svgElement.classList.remove('progressbar-animate');
+
+        if (this.state === 'hidden') {
+            this.svgElement.classList.add('progressbar-hide');
+        } 
+        
+        if (this.state === 'animate') {
+            this.svgElement.classList.add('progressbar-animate');
+        }
+    }
+    
     setOffset(offset) {
         this.offset = offset;
         this.updateProgress();
@@ -49,10 +73,6 @@ class ProgressBar {
     setStrokeColor(color) {
         this.color = color;
         this.updateStrokeColor(this.color);
-    }
-
-    updateStrokeColor() {
-        this.circleElement.setAttribute('stroke', this.color);
     }
 
     setStrokeWidth(strokeWidth) {
@@ -81,6 +101,10 @@ class ProgressBar {
 
     calculateCircumference() {
         return 2 * Math.PI * this.radius;
+    }
+
+    updateStrokeColor() {
+        this.circleElement.setAttribute('stroke', this.color);
     }
 
     updateSize() {

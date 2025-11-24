@@ -1,17 +1,11 @@
+// задаём параметры
 const progressValue = 100;
 const size = 300
 const strokeWidth = 20;
 const color = 'lightblue';
 
-const svgElement = document.querySelector('svg');
-const circleElement = document.querySelector('circle');
+// берём элементы из DOM
+const progressBarWrapper = document.querySelector('.progressWrapper');
 
-const progressBar = new ProgressBar(svgElement, circleElement, progressValue, size, strokeWidth, color);
-
-const inputElement = document.querySelector('.input');
-
-inputElement.addEventListener('input', (event)  => {
-    progressBar.setProgress(event.target.value);
-});
-
-progressBar.setStrokeWidth(100);
+// создаём прогресс бар
+const progressBarInterface = new ProgressBarInterface(progressBarWrapper, progressValue, size, strokeWidth, color);
