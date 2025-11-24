@@ -1,10 +1,7 @@
 class ProgressBar {
-    constructor(progress = 100, size = 200, strokeWidth = 5, color = 'black') {
-        this.svgElement = document.querySelector('svg');
-        this.circleElement = document.querySelector('circle');
-        this.inputElement = document.querySelector('.input');
-        this.animateCheckbox = document.querySelector('.animate');
-        this.hideCheckbox = document.querySelector('.hide');
+    constructor(svgElement, circleElement, progress = 100, size = 200, strokeWidth = 5, color = 'black') {
+        this.svgElement = svgElement;
+        this.circleElement = circleElement;
 
         this.svgSize = size;
         this.strokeWidth = strokeWidth;
@@ -13,11 +10,12 @@ class ProgressBar {
         this.radius = this.calculateRadius();
         this.circumference = this.calculateCircumference();
         this.color = color;
+        this.offset = this.calculateOffset();
 
         this.updateSize();
         this.updateRadius();
         this.updateStrokeWidth();
-        this.updateStrokeColor(color);
+        this.updateStrokeColor();
         this.updateProgress();
 
     }
@@ -31,18 +29,26 @@ class ProgressBar {
         this.updateProgress();
     }
 
+    setOffset(offset) {
+        this.offset = offset;
+        this.updateProgress();
+    }
+
+    calculateOffset() {
+        return this.circumference - (this.progress * this.circumference) / 100;
+    }
+
     setSize(size) {
         this.svgSize = size;
 
-        this.updateRadius();
-        this.updateCircumference();
-        this.updateStrokeWidth();
+        this.setRadius(this.calculateRadius());
+        this.setCircumference(this.calculateCircumference());
         this.updateSize();
     }
 
     setStrokeColor(color) {
         this.color = color;
-        this.updateStrokeColor(color);
+        this.updateStrokeColor(this.color);
     }
 
     updateStrokeColor() {
@@ -52,10 +58,12 @@ class ProgressBar {
     setStrokeWidth(strokeWidth) {
         this.strokeWidth = strokeWidth;
         this.setRadius(this.calculateRadius());
-        this.setCirciumference(this.calculateCircumference());
+        this.setCircumference(this.calculateCircumference());
+        this.setOffset(this.calculateOffset());
 
         this.updateRadius();
         this.updateStrokeWidth();
+        this.updateProgress(); 
     }
 
     setRadius(radius) {
@@ -63,7 +71,7 @@ class ProgressBar {
         this.updateRadius();
     }
 
-    setCirciumference(circumference) {
+    setCircumference(circumference) {
         this.circumference = circumference;
     }
 
@@ -79,7 +87,7 @@ class ProgressBar {
         this.svgElement.setAttribute('width', this.svgSize);
         this.svgElement.setAttribute('height', this.svgSize);
         this.circleElement.setAttribute('cx', this.svgSize / 2);
-        this.circleElement.setAttribute('cy', this.svgSize / 2 );
+        this.circleElement.setAttribute('cy', this.svgSize / 2);
     }
 
     updateRadius() {
