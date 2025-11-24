@@ -2,7 +2,7 @@
 const progressValue = 100;
 const size = 300
 const strokeWidth = 20;
-const color = 'lightblue';
+const color = '#005bff';
 
 // берём элементы из DOM
 const progressBarWrapper = document.querySelector('.progress-wrapper');
