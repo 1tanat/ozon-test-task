@@ -31,11 +31,6 @@ body {
     pointer-events: none;
 }
 
-.progress-bar {
-    fill: none;
-    stroke-linecap: round;
-}
-
 .progress-toggles {
     display: flex;
     flex-direction: column;
