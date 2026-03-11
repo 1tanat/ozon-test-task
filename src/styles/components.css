@@ -1,0 +1,114 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px 20px;
+    align-items: center;
+    width: max-content;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: contents;
+}
+
+.form-row > *:first-child {
+    grid-column: 1;
+}
+
+.form-row .form-label {
+    grid-column: 2;
+    text-align: left;
+}
+
+.form-label {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #333;
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: var(--control-width);
+    height: var(--control-height);
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--control-radius);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--focus-color);
+}
+
+.input--number {
+    text-align: center;
+    width: calc(4ch + 24px);
+    min-width: 56px;
+    font-size: 0.875rem;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.input--number::-webkit-outer-spin-button,
+.input--number::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.toggle__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toggle__track {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background-color: var(--toggle-off);
+    transition: background-color 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__track {
+    background-color: var(--progress-color);
+}
+
+.toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: var(--toggle-thumb-size);
+    height: var(--toggle-thumb-size);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    pointer-events: none;
+}
+
+.toggle__input:checked ~ .toggle__thumb {
+    transform: translateX(calc(var(--toggle-width) - var(--toggle-thumb-size) - 4px));
+}
+
+.toggle__input:focus-visible ~ .toggle__track {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--focus-color);
+}

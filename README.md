@@ -12,31 +12,32 @@
 - **CSS**
 - **JavaScript**
   
-Запуск локально:
-
-1. Открыть файл `index.html` в браузере (двойной клик или через контекстное меню «Открыть с помощью…»).
-2. Для публикации на GitHub Pages — достаточно выложить весь репозиторий и указать корень проекта как источник для Pages.
+Запуск: открыть `index.html` в браузере (двойной клик или «Открыть с помощью…»).
 
 ---
 
 ### 2. Структура проекта
 
-- `index.html` — разметка страницы:
-  - контейнер блока прогресса `div.progress-wrapper`
-  - внутри: `svg` с окружностью и блок управляющих элементов (`Value`, `Animate`, `Hide`)
-- `style.css` — стили блока и окружающего интерфейса
-  
-- `progressBar.js` — класс `ProgressBar`, отвечающий за:
-  - отрисовку и обновление круговой дуги прогресса
-  - вычисление геометрии (радиус, длина окружности, смещение `stroke-dashoffset`)
-  - состояния `normal / animate / hidden`
-- `progressBarInterface.js` — класс `ProgressBarInterface`, который:
-  - связывает разметку (`input`, чекбоксы) с API `ProgressBar`
-  - подписывается на события UI и вызывает методы `ProgressBar`
- 
-- `script.js` — точка входа:
-  - находит `progressWrapper`
-  - создаёт экземпляр `ProgressBarInterface`
+```
+├── index.html
+├── script.js
+├── src/
+│   ├── styles/
+│   │   ├── base.css
+│   │   └── components.css
+│   └── blocks/
+│       └── progress/
+│           ├── progress.css
+│           ├── progressBar.js
+│           └── progressBarInterface.js
+└── api/
+    └── progressApi.js
+```
+
+- **Блок progress**: в `src/blocks/progress/` лежат стили блока (`progress.css`) и логика (`progressBar.js`, `progressBarInterface.js`).
+- **Общие стили**: `src/styles/base.css`, `src/styles/components.css`.
+- **API управления**: `api/progressApi.js` — инициализация и программное управление (значение, состояние, размер, цвет).
+- **Точка входа**: `script.js` вызывает `ProgressApi.init('.progress-wrapper', { value, size, strokeWidth, color })`.
 
 ---
 #### Конструктор ProgressBar

@@ -23,9 +23,11 @@ class ProgressBarInterface {
             });
         }
 
-        this.inputElement.addEventListener('input', (event)  => {
-            this.progressBar.setProgressValue(event.target.value);
-        });
+        if (this.inputElement) {
+            this.inputElement.addEventListener('input', (event) => {
+                this.progressBar.setProgressValue(event.target.value);
+            });
+        }
     }
 
     updateState() {

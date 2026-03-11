@@ -26,7 +26,7 @@ class ProgressBar {
         if (value < 0) value = 0;
         if (value > 100) value = 100;
         this.progressValue = value;
-        
+
         this.offset = this.calculateOffset();
         this.updateProgress();
     }
@@ -35,19 +35,20 @@ class ProgressBar {
         this.state = state;
         this.updateState();
     }
+
     updateState() {
         this.svgElement.classList.remove('progressbar-hide');
         this.svgElement.classList.remove('progressbar-animate');
 
         if (this.state === 'hidden') {
             this.svgElement.classList.add('progressbar-hide');
-        } 
-        
+        }
+
         if (this.state === 'animate') {
             this.svgElement.classList.add('progressbar-animate');
         }
     }
-    
+
     setOffset(offset) {
         this.offset = offset;
         this.updateProgress();
@@ -82,7 +83,7 @@ class ProgressBar {
 
         this.updateRadius();
         this.updateStrokeWidth();
-        this.updateProgress(); 
+        this.updateProgress();
     }
 
     setRadius(radius) {

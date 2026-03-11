@@ -1,33 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Progress Element Test</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="progressBar.js" defer></script>
-        <script src="progressBarInterface.js" defer></script>
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <div class="progress-wrapper">
-            <svg class="progress-svg">
-                <circle class="progress-bar" fill="none" />
-            </svg>
-            <div class="progress-toggles">
-                <div>
-                    <input type="number" min="0" max="100" class="progress-input">
-                    <span>Value</span>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progress Element Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/base.css">
+    <link rel="stylesheet" href="src/styles/components.css">
+    <link rel="stylesheet" href="src/blocks/progress/progress.css">
+    <script src="src/blocks/progress/progressBar.js" defer></script>
+    <script src="src/blocks/progress/progressBarInterface.js" defer></script>
+    <script src="api/progressApi.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="progress-wrapper">
+        <svg class="progress-svg" aria-hidden="true">
+            <circle class="progress-bar" fill="none" />
+        </svg>
+        <div class="form-grid">
+            <div class="form-row">
+                <div class="form-control">
+                    <input type="number" min="0" max="100" class="input input--number progress-input" value="100">
                 </div>
-                <div>
-                    <input type="checkbox" class="checkbox-animate">
-                    <span>Animate</span>
-                </div>
-                <div>
-                    <input type="checkbox" class="checkbox-hidden">
-                    <span>Hide</span>
-                </div>
-
+                <span class="form-label">Value</span>
+            </div>
+            <div class="form-row">
+                <label class="toggle">
+                    <input type="checkbox" class="toggle__input checkbox-animate" />
+                    <span class="toggle__track"></span>
+                    <span class="toggle__thumb"></span>
+                </label>
+                <span class="form-label">Animate</span>
+            </div>
+            <div class="form-row">
+                <label class="toggle">
+                    <input type="checkbox" class="toggle__input checkbox-hidden" />
+                    <span class="toggle__track"></span>
+                    <span class="toggle__thumb"></span>
+                </label>
+                <span class="form-label">Hide</span>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

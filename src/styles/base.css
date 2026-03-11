@@ -1,0 +1,30 @@
+:root {
+    --font-sans: 'Roboto', sans-serif;
+    --progress-color: #005bff;
+    --control-width: 52px;
+    --control-height: 28px;
+    --control-radius: 14px;
+    --border-color: #e0e0e0;
+    --focus-color: #005bff;
+    --toggle-off: #e0e0e0;
+    --toggle-width: 52px;
+    --toggle-height: 28px;
+    --toggle-thumb-size: 24px;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
